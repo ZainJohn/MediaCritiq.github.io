@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MediaCritiq | Home</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Overall page shell: the sticky header and the main content area sit inside this body. -->
+  <header class="site-header">
+    <div class="site-header-inner">
+      <div class="brand">
+        <img src="images/logo.png" alt="MediaCritiq logo" />
+        <div class="brand-copy">
+          <small>Streaming & stories</small>
+          <h1>MediaCritiq</h1>
+        </div>
+      </div>
+      <!-- Mobile menu button shown only on smaller screens; it opens and closes the navigation menu. -->
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <!-- Main site navigation links to each page in the MediaCritiq website. -->
+      <nav class="main-menu" aria-label="Main navigation">
+        <a href="index.html" class="active">Home</a>
+        <a href="discover.html">Discover</a>
+        <a href="watchlist.html">Watchlist</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="contact-us.html">Contact</a>
+        <a href="about-us.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <!-- Hero section introduces the brand and highlights one featured adaptation. -->
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Now trending</span>
+        <h2>Where every story deserves a second look.</h2>
+        <p>MediaCritiq helps you discover the movies, TV shows, comics, and novels behind the stories you love. Explore the adaptation, compare the source material, and decide what belongs on your next watchlist.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="watchlist.html">Browse the watchlist</a>
+          <a class="button secondary" href="discover.html">Read the source</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-label="Featured adaptation poster">
+        <div class="hero-feature">
+          <small>Featured adaptation</small>
+          <h3>Batman Begins</h3>
+        </div>
+      </div>
+    </section>
+
+    <div class="content-stack">
+      <!-- Repeating content blocks create horizontally scrollable media rows for homepage recommendations. -->
+      <section class="carousel-section">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Editor picks</p>
+            <h2>Big-screen favourites</h2>
+          </div>
+          <div class="carousel-controls">
+            <button class="scroll-btn scroll-prev" aria-label="Previous row">←</button>
+            <button class="scroll-btn scroll-next" aria-label="Next row">→</button>
+          </div>
+        </div>
+        <div class="media-row">
+          <div class="media-track">
+            <article class="media-card"><img class="poster" src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=800&q=80" alt="Spider-Verse scene" /><div class="info"><span class="tag">Movie</span><h3>Spider-Verse</h3><p>Animated action with comic energy, emotional depth, and unforgettable style.</p></div></article>
+            <article class="media-card"><img class="poster" src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?auto=format&fit=crop&w=800&q=80" alt="Dune styled poster" /><div class="info"><span class="tag">Epic</span><h3>Dune</h3><p>A sweeping sci-fi adaptation that transforms political tension into spectacle.</p></div></article>
+            <article class="media-card"><img class="poster" src="https://images.unsplash.com/photo-1517602302552-471fe67acf66?auto=format&fit=crop&w=800&q=80" alt="TV screen" /><div class="info"><span class="tag">Series</span><h3>Umbrella Academy</h3><p>Superhero chaos meets emotional family drama in a pulse-racing series.</p></div></article>
+            <article class="media-card"><img class="poster" src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&w=800&q=80" alt="Cinema hall" /><div class="info"><span class="tag">Classic</span><h3>Dark Knight</h3><p>Grit, tension, and moral ambiguity make this a benchmark comic adaptation.</p></div></article>
+            <article class="media-card"><img class="poster" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Books stacked" /><div class="info"><span class="tag">Read</span><h3>Graphic Novel Guide</h3><p>Explore the source stories that shaped the screen versions fans talk about.</p></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="carousel-section">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Adaptation archive</p>
+            <h2>New release picks</h2>
+          </div>
+          <div class="carousel-controls">
+            <button class="scroll-btn scroll-prev" aria-label="Previous row">←</button>
+            <button class="scroll-btn scroll-next" aria-label="Next row">→</button>
+          </div>
+        </div>
+        <div class="media-row">
+          <div class="media-track">
+            <article class="media-card"><img class="poster" src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=800&q=80" alt="Comic closeup" /><div class="info"><span class="tag">Comic</span><h3>Watchmen</h3><p>A layered, daring deconstruction of hero mythos and social commentary.</p></div></article>
+            <article class="media-card"><img class="poster" src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=800&q=80" alt="Book stack" /><div class="info"><span class="tag">Novel</span><h3>Dune</h3><p>Huge ideas, political strategy, and environmental stakes in a classic text.</p></div></article>
+            <article class="media-card"><img class="poster" src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=800&q=80" alt="Batman illustration" /><div class="info"><span class="tag">Legacy</span><h3>The Dark Knight Returns</h3><p>An iconic revival story that redefined how comic characters are told on screen.</p></div></article>
+            <article class="media-card"><img class="poster" src="https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?auto=format&fit=crop&w=800&q=80" alt="TV series aesthetic" /><div class="info"><span class="tag">Series</span><h3>WandaVision</h3><p>Marvel's mix of sentiment, nostalgia, and surrealism changed the genre playbook.</p></div></article>
+            <article class="media-card"><img class="poster" src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=800&q=80" alt="Film reel capture" /><div class="info"><span class="tag">Must watch</span><h3>All Quiet</h3><p>Grounded, human, and haunting — a film that turns adaptation into reflection.</p></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="carousel-section">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Fan favourites</p>
+            <h2>Continue watching</h2>
+          </div>
+          <div class="carousel-controls">
+            <button class="scroll-btn scroll-prev" aria-label="Previous row">←</button>
+            <button class="scroll-btn scroll-next" aria-label="Next row">→</button>
+          </div>
+        </div>
+        <div class="media-row">
+          <div class="media-track">
+            <article class="media-card"><img class="poster" src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=800&q=80" alt="Comic cover" /><div class="info"><span class="tag">Rewatch</span><h3>V for Vendetta</h3><p>Political tension and chaotic energy turn a comic into a lasting cultural hit.</p></div></article>
+            <article class="media-card"><img class="poster" src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=800&q=80" alt="Reader with book" /><div class="info"><span class="tag">Book</span><h3>Hunger Games</h3><p>High stakes, human sacrifice, and a totalitarian world with big-screen scale.</p></div></article>
+            <article class="media-card"><img class="poster" src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80" alt="Sci-fi still" /><div class="info"><span class="tag">Epic</span><h3>Arrival</h3><p>Thoughtful sci-fi adaptation with layered writing and emotional payoff.</p></div></article>
+            <article class="media-card"><img class="poster" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80" alt="Cinematic mountain" /><div class="info"><span class="tag">Drama</span><h3>Shawshank</h3><p>Character-led storytelling and emotional detail that keeps viewers returning.</p></div></article>
+            <article class="media-card"><img class="poster" src="https://images.unsplash.com/photo-1513106580091-1d82408b8cd6?auto=format&fit=crop&w=800&q=80" alt="Comic-inspired still" /><div class="info"><span class="tag">Featured</span><h3>The Batman</h3><p>Dark detective energy, slow-burn tension, and a sharp reimagining of the myth.</p></div></article>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer gives a small brand message and keeps the page visually closed out. -->
+  <footer>&copy; 2026 MediaCritiq. Built for readers, viewers, and every adaptation fan.</footer>
+
+  <!-- The JavaScript handles interactive behavior like carousels, navigation, and poster fetches. -->
+  <script src="app.js"></script>
+</body>
+</html>
