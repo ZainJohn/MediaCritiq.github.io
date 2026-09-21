@@ -1,0 +1,19 @@
+<svg width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="220" height="220" rx="52" fill="#0B1220"/>
+  <circle cx="110" cy="110" r="82" stroke="url(#paint0_linear_1_2)" stroke-width="10"/>
+  <circle cx="110" cy="110" r="58" fill="#121A2B" stroke="#F7C873" stroke-width="4"/>
+  <rect x="64" y="66" width="93" height="88" rx="18" fill="#F7C873" fill-opacity="0.2"/>
+  <path d="M83 139V89.5C83 83.1487 88.1487 78 94.5 78H125.5C131.851 78 137 83.1487 137 89.5V139" stroke="#F7C873" stroke-width="10" stroke-linecap="round"/>
+  <path d="M101 92V135" stroke="#F7C873" stroke-width="8" stroke-linecap="round"/>
+  <path d="M118 92V135" stroke="#F7C873" stroke-width="8" stroke-linecap="round"/>
+  <path d="M83 104H137" stroke="#F7C873" stroke-width="8" stroke-linecap="round"/>
+  <path d="M104 146L110 151L116 146" stroke="#87E6FF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="110" y="178" text-anchor="middle" fill="#EAF6FF" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="24">MediaCritiq</text>
+  <defs>
+    <linearGradient id="paint0_linear_1_2" x1="28" y1="35" x2="182" y2="185" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF7B54"/>
+      <stop offset="0.5" stop-color="#F7C873"/>
+      <stop offset="1" stop-color="#7BE0FF"/>
+    </linearGradient>
+  </defs>
+</svg>
