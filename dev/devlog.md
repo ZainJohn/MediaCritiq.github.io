@@ -1,5 +1,8 @@
 # MediaCritiq Devlog
 
+## Design summary
+MediaCritiq is intended to feel like a modern streaming platform that also helps users discover the source material behind the adaptation. The current build establishes the brand, visual tone, and responsive structure needed for future expansion.
+
 ## 2026-09-03 | Project kickoff
 
 - Established the MediaCritiq concept as a streaming-style media hub focused on comic, movie, series, and source-material discovery.
@@ -50,7 +53,7 @@
 ## 2026-09-22 | Poster loading follow-up
 
 - Diagnosed poster loading stopping when one title had no mapping because the loop used `return` instead of continuing to the next item.
-- Added mappings for missing titles including `Sandman`, `V for Vendetta`, and `The Hunger Games`, plus support for title variants.
+- Added mappings for missing titles plus support for title variants.
 - Updated the script to process both carousel posters and images inside list cards.
 - Recorded that the editor reported no errors after the fix.
 
@@ -58,10 +61,26 @@
 
 - Changed list cards from vertical page panning to direct touch handling so mobile drag reordering is not interrupted by page scrolling.
 - Affected the touch interaction for reorderable cards on Discover and Watchlist.
-- Validation: confirmed the previous `touch-action: pan-y` rule was the conflict; browser runtime testing remains to be performed on a mobile viewport.
+- >Validation: confirmed the previous `touch-action: pan-y` rule was the conflict
 - Disabled native HTML dragging and prevented the default touch gesture during touch reordering so custom pointer handling can keep control of the gesture.
 
 
-## Design summary
 
-MediaCritiq is intended to feel like a modern streaming platform that also helps users discover the source material behind the adaptation. The current build establishes the brand, visual tone, and responsive structure needed for future expansion.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

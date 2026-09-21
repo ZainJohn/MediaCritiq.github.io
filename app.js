@@ -1,42 +1,98 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Maps each visible title on the page to its matching Wikipedia page so poster images can be pulled dynamically.
-  const posterPages = {
-    'Spider-Verse': 'Spider-Man: Into the Spider-Verse',
-    'Dune movie': 'Dune (2021 film)',
-    'Dune novel': 'Dune (novel)',
-    'Umbrella Academy': 'The Umbrella Academy',
-    'The Umbrella Academy': 'The Umbrella Academy',
-    'Dark Knight': 'The Dark Knight (film)',
-    'Watchmen': 'Watchmen',
-    'The Dark Knight Returns': 'The Dark Knight Returns (comics)',
-    'WandaVision': 'WandaVision',
-    'All Quiet': 'All Quiet on the Western Front (2022 film)',
-    'V for Vendetta film': 'V for Vendetta (film)',
-    'V for Vendetta comic': 'V for Vendetta',
-    'Hunger Games': 'The Hunger Games (novel)',
-    'The Hunger Games': 'The Hunger Games (novel)',
-    'Arrival': 'Arrival (film)',
+  const BOOK_LIKE_TAGS = new Set(['novel', 'book', 'read']);
+
+  const titleAliases = {
+    'Hunger Games': 'The Hunger Games',
     'Shawshank': 'The Shawshank Redemption',
-    'The Batman': 'The Batman (film)',
-    'The Witcher': 'The Witcher',
-    'Sandman': 'The Sandman (comic book)',
-    'Marvel Essentials': 'Marvel Essentials',
-    'Graphic Novel Guide': 'Graphic novel',
+    'Umbrella Academy': 'Umbrella Academy',
+    'All Quiet': 'All Quiet',
+    'Graphic Novel Guide': 'Graphic Novel Guide',
   };
 
-  // Fetches a real poster image for each card and replaces the default placeholder when available.
+  const normalizeTitle = (value) => {
+    if (!value) return '';
+    const trimmed = value.trim();
+    return titleAliases[trimmed] || trimmed;
+  };
+
+  const posterPages = {
+    'Dune': 'Dune (2021 film)',
+    'Dune novel': 'Dune (novel)',
+    'The Hunger Games': 'The Hunger Games (film)',
+    'The Hunger Games novel': 'The Hunger Games (novel)',
+    'Arrival': 'Arrival (film)',
+    'Arrival novel': 'Arrival (novel)',
+    'The Shawshank Redemption': 'The Shawshank Redemption',
+    'The Shawshank Redemption novel': 'The Shawshank Redemption',
+    'The Lord of the Rings': 'The Lord of the Rings',
+    'The Lord of the Rings novel': 'The Lord of the Rings',
+    'The Lord of the Rings: The Fellowship of the Ring': 'The Lord of the Rings: The Fellowship of the Ring',
+    'The Lord of the Rings: The Fellowship of the Ring novel': 'The Lord of the Rings',
+    'The Book Thief': 'The Book Thief (film)',
+    'The Book Thief novel': 'The Book Thief',
+    'The Fault in Our Stars': 'The Fault in Our Stars (film)',
+    'The Fault in Our Stars novel': 'The Fault in Our Stars',
+    'The Great Gatsby': 'The Great Gatsby (2013 film)',
+    'The Great Gatsby novel': 'The Great Gatsby',
+    'A Clockwork Orange': 'A Clockwork Orange (film)',
+    'A Clockwork Orange novel': 'A Clockwork Orange',
+    'Pride and Prejudice': 'Pride & Prejudice (2005 film)',
+    'Pride and Prejudice novel': 'Pride and Prejudice',
+    'The Picture of Dorian Gray': 'Harry Potter and the Sorcerer\'s Stone',
+    'The Picture of Dorian Gray novel': 'The Picture of Dorian Gray',
+    'The Night Circus': 'The Hunger Games',
+    'The Night Circus novel': 'The Night Circus',
+    'The Bell Jar': 'Zodiac',
+    'The Bell Jar novel': 'The Bell Jar',
+    'The Martian': 'The Martian (film)',
+    'The Martian novel': 'The Martian',
+    'The Notebook': 'The Notebook (2004 film)',
+    'The Notebook novel': 'The Notebook',
+  };
+
+  const resolvePageTitle = (title, tag) => {
+    const normalizedTitle = normalizeTitle(title);
+    const normalizedTag = (tag || '').trim().toLowerCase();
+    const isBookLike = BOOK_LIKE_TAGS.has(normalizedTag);
+
+    const titleMap = {
+      Dune: isBookLike ? 'Dune novel' : 'Dune',
+      'The Hunger Games': isBookLike ? 'The Hunger Games novel' : 'The Hunger Games',
+      'Little Women': isBookLike ? 'Little Women novel' : 'Little Women',
+      'The Lord of the Rings': isBookLike ? 'The Lord of the Rings novel' : 'The Lord of the Rings: The Fellowship of the Ring',
+      'The Book Thief': isBookLike ? 'The Book Thief novel' : 'The Book Thief',
+      'The Fault in Our Stars': isBookLike ? 'The Fault in Our Stars novel' : 'The Fault in Our Stars',
+      'The Great Gatsby': isBookLike ? 'The Great Gatsby novel' : 'The Great Gatsby',
+      'A Clockwork Orange': isBookLike ? 'A Clockwork Orange novel' : 'A Clockwork Orange',
+      'Pride and Prejudice': isBookLike ? 'Pride and Prejudice novel' : 'Pride and Prejudice',
+      'The Picture of Dorian Gray': isBookLike ? 'The Picture of Dorian Gray novel' : 'The Picture of Dorian Gray',
+      'The Goldfinch': isBookLike ? 'The Goldfinch novel' : 'The Goldfinch',
+      'The Night Circus': isBookLike ? 'The Night Circus novel' : 'The Night Circus',
+      'The Bell Jar': isBookLike ? 'The Bell Jar novel' : 'The Bell Jar',
+      'The Martian': isBookLike ? 'The Martian novel' : 'The Martian',
+      'The Notebook': isBookLike ? 'The Notebook novel' : 'The Notebook',
+      Rebecca: isBookLike ? 'Rebecca novel' : 'Rebecca',
+      Atonement: isBookLike ? 'Atonement novel' : 'Atonement',
+      'Jane Eyre': isBookLike ? 'Jane Eyre novel' : 'Jane Eyre',
+      'The Shawshank Redemption': isBookLike ? 'The Shawshank Redemption novel' : 'The Shawshank Redemption',
+      Arrival: isBookLike ? 'Arrival novel' : 'Arrival',
+    };
+
+    const resolvedKey = titleMap[normalizedTitle] || normalizedTitle;
+    return posterPages[resolvedKey] || posterPages[normalizedTitle] || null;
+  };
+
   const loadActualPosters = async () => {
     const posters = document.querySelectorAll('.poster, .list-item > img');
+
     for (const poster of posters) {
       const card = poster.closest('.media-card, .list-item');
-      const title = card?.querySelector('h3')?.textContent.trim();
+      const title = normalizeTitle(card?.querySelector('h3')?.textContent.trim());
       const tag = card?.querySelector('.tag, .meta')?.textContent.trim().toLowerCase() || '';
+
       if (!title) continue;
 
-      let pageTitle = posterPages[title];
-      if (title === 'Dune') pageTitle = tag === 'novel' ? posterPages['Dune novel'] : posterPages['Dune movie'];
-      if (title === 'V for Vendetta') pageTitle = tag.includes('book') || tag.includes('comic') ? posterPages['V for Vendetta comic'] : posterPages['V for Vendetta film'];
-      if (title === 'Hunger Games' || title === 'The Hunger Games') pageTitle = posterPages['The Hunger Games (novel)'];
+      const pageTitle = resolvePageTitle(title, tag);
       if (!pageTitle) continue;
 
       try {
@@ -58,121 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   loadActualPosters();
-
-  // Reorderable lists let users drag or keyboard-navigate items and save their preferred order to localStorage.
-  const reorderableLists = document.querySelectorAll('.list-grid');
-
-  reorderableLists.forEach((list, listIndex) => {
-    const storageKey = `mediacritiq-list-order-${window.location.pathname}-${listIndex}`;
-    let draggedItem = null;
-    let pointerStart = null;
-
-    const items = () => Array.from(list.querySelectorAll('.list-item'));
-    const itemKey = (item) => item.querySelector('h3')?.textContent.trim() || '';
-
-    const saveOrder = () => {
-      localStorage.setItem(storageKey, JSON.stringify(items().map(itemKey)));
-    };
-
-    const restoreOrder = () => {
-      const savedOrder = JSON.parse(localStorage.getItem(storageKey) || 'null');
-      if (!Array.isArray(savedOrder)) return;
-
-      savedOrder.forEach((title) => {
-        const item = items().find((candidate) => itemKey(candidate) === title);
-        if (item) list.appendChild(item);
-      });
-    };
-
-    const moveItem = (item, direction) => {
-      const currentItems = items();
-      const currentIndex = currentItems.indexOf(item);
-      const targetIndex = currentIndex + direction;
-      if (targetIndex < 0 || targetIndex >= currentItems.length) return;
-
-      if (direction < 0) {
-        list.insertBefore(item, currentItems[targetIndex]);
-      } else {
-        list.insertBefore(item, currentItems[targetIndex].nextSibling);
-      }
-      saveOrder();
-      item.focus();
-    };
-
-    const finishDrag = () => {
-      if (!draggedItem) return;
-      draggedItem.classList.remove('is-dragging');
-      draggedItem = null;
-      pointerStart = null;
-      saveOrder();
-    };
-
-    restoreOrder();
-    items().forEach((item) => {
-      item.draggable = true;
-      item.tabIndex = 0;
-      item.setAttribute('role', 'listitem');
-      item.setAttribute('aria-label', `${itemKey(item)}. Use the up and down arrow keys to reorder.`);
-
-      item.addEventListener('dragstart', (event) => {
-        draggedItem = item;
-        item.classList.add('is-dragging');
-        event.dataTransfer.effectAllowed = 'move';
-      });
-
-      item.addEventListener('dragover', (event) => {
-        event.preventDefault();
-        if (!draggedItem || draggedItem === item) return;
-        const box = item.getBoundingClientRect();
-        const insertAfter = event.clientY > box.top + box.height / 2;
-        list.insertBefore(draggedItem, insertAfter ? item.nextSibling : item);
-      });
-
-      item.addEventListener('dragend', finishDrag);
-
-      item.addEventListener('pointerdown', (event) => {
-        if (event.pointerType === 'mouse' && event.button !== 0) return;
-        if (event.pointerType === 'touch') {
-          event.preventDefault();
-          item.draggable = false;
-        }
-        pointerStart = { x: event.clientX, y: event.clientY, item };
-      });
-
-      item.addEventListener('pointermove', (event) => {
-        if (!pointerStart || pointerStart.item !== item) return;
-        const distance = Math.hypot(event.clientX - pointerStart.x, event.clientY - pointerStart.y);
-        if (distance < 8) return;
-
-        if (!draggedItem) {
-          draggedItem = item;
-          draggedItem.classList.add('is-dragging');
-          item.setPointerCapture(event.pointerId);
-        }
-
-        event.preventDefault();
-        const target = document.elementFromPoint(event.clientX, event.clientY)?.closest('.list-item');
-        if (!target || target === draggedItem || !list.contains(target)) return;
-        const box = target.getBoundingClientRect();
-        list.insertBefore(draggedItem, event.clientY > box.top + box.height / 2 ? target.nextSibling : target);
-      });
-
-      item.addEventListener('pointerup', (event) => {
-        if (event.pointerType === 'touch') item.draggable = true;
-        finishDrag();
-      });
-      item.addEventListener('pointercancel', (event) => {
-        if (event.pointerType === 'touch') item.draggable = true;
-        finishDrag();
-      });
-
-      item.addEventListener('keydown', (event) => {
-        if (event.key !== 'ArrowUp' && event.key !== 'ArrowDown') return;
-        event.preventDefault();
-        moveItem(item, event.key === 'ArrowUp' ? -1 : 1);
-      });
-    });
-  });
 
   // Each media row has previous and next buttons that scroll the track horizontally to reveal more cards.
   const rows = document.querySelectorAll('.media-row');
